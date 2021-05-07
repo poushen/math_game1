@@ -5,14 +5,15 @@
 
 /*
   A simple math game
-   1  ?  ? 12  | 31  , ? + ? = 18
-   ?  ?  ?  ?  | 27
-   ?  ?  ?  ?  | 29
-  16  ?  ? 10  | 49  , ? + ? = 23
+   1  ?  ? 12  | 31  , ? + ? = 18 (A1)
+   ?  ?  ?  ?  | 27               (A2)
+   ?  ?  ?  ?  | 29               (A3)
+  16  ?  ? 10  | 49  , ? + ? = 23 (A4)
   -------------+
   43 37 23 33
   
   26       11  <=  ? + ?
+  B1 B2 B3 B4
   
   This is a 4 x 4 matrix, permute from 1 to 16.
   We know each row count (list on the righ side of each row) and column count (list under each column).
@@ -23,6 +24,15 @@
 typedef unsigned char BYTE;
 
 #define TOTAL_TRIES 4790016		// 12! / 100, that's the times we need to try
+#define A1 18					// sum of row 1
+#define A2 27					// sum of row 2
+#define A3 29					// sum of row 3
+#define A4 23					// sum of row 4
+#define B1 26					// sum of column 1
+#define B2 37					// sum of column 2
+#define B3 23					// sum of column 3
+#define B4 11					// sum of column 4
+
 int match_number = 0;
 
 // print index
@@ -98,14 +108,14 @@ if (l == r)
     string2ByteArray(a, arr);
 
 	// selection criteria list here
-    if (  ((arr[0] + arr[1]) == 18) && 
-          ((arr[2] + arr[3] + arr[4] + arr[5]) == 27) &&
-          ((arr[6] + arr[7] + arr[8] + arr[9]) == 29) &&
-          ((arr[10] + arr[11]) == 23) &&
-          ((arr[2] + arr[6]) == 26) && 
-          ((arr[0] + arr[3] + arr[7] + arr[10]) == 37) &&
-          ((arr[1] + arr[4] + arr[8] + arr[11]) == 23) &&
-          ((arr[5] + arr[9]) == 11) )
+    if (  ((arr[0] + arr[1]) == A1) && 
+          ((arr[2] + arr[3] + arr[4] + arr[5]) == A2) &&
+          ((arr[6] + arr[7] + arr[8] + arr[9]) == A3) &&
+          ((arr[10] + arr[11]) == A4) &&
+          ((arr[2] + arr[6]) == B1) && 
+          ((arr[0] + arr[3] + arr[7] + arr[10]) == B2) &&
+          ((arr[1] + arr[4] + arr[8] + arr[11]) == B3) &&
+          ((arr[5] + arr[9]) == B4) )
 		  {
 			  print_array(arr, len);
 			  match_number++;
@@ -131,9 +141,11 @@ int main()
 	
 	// map A to 1, B to 2, C to 3, ...
 	// just list what we want to permute
+	//
 	// A B C D E F G H I  J  K  L  M  N  O  P
 	// 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
-	// 1 10 12 16 should be skip, therefor
+	//
+	// in this case, 1 10 12 16 should be skip, therefor
 	// A  J  L  P will be delete from the str[] array
     char str[] = "BCDEFGHIKMNO";
     int n = strlen(str);
