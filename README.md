@@ -32,3 +32,5 @@ ops@ops-win81:/mnt/c/Users/Phou-shen$ ./test2 </br>
 13  5  2  9 </br>
  0 16  8  0 </br>
 ------------ </br>
+
+the same method apply to test3.c </br>
