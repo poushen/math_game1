@@ -21,16 +21,18 @@ test3.c is for </br>
 # How to execute and see the result
 ops@ops-win81:/mnt/c/Users/Phou-shen$ gcc -o test2 test2.c </br>
 ops@ops-win81:/mnt/c/Users/Phou-shen$ ./test2 </br>
- 0 12  7  0 </br>
+ 1 12  7 11 </br>
 13  5  6  3 </br>
 14  4  2  9 </br>
- 0 16  8  0 </br>
+15 16  8 10 </br>
 ------------ </br>
 </br>
- 0 12  7  0 </br>
+ 1 12  7 11 </br>
 14  4  6  3 </br>
 13  5  2  9 </br>
- 0 16  8  0 </br>
+15 16  8 10 </br>
 ------------ </br>
+</br>
+It took 47.53 seconds, find 2 matchs </br>
 
 the same method apply to test3.c </br>
