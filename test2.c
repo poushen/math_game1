@@ -42,10 +42,10 @@ void print_array(BYTE* array, int len)
     // for (i=0; i<len; i++)
     // printf("%d,", array[i]);
     // printf("\n");
-	printf("%2d %2d %2d %2d         \n", 0, array[0], array[1], 0);
+	printf("%2d %2d %2d %2d         \n", 1, array[0], array[1], 11);
 	printf("%2d %2d %2d %2d\n", array[2], array[3], array[4], array[5]);
 	printf("%2d %2d %2d %2d\n", array[6], array[7], array[8], array[9]);
-	printf("%2d %2d %2d %2d\n", 0, array[10], array[11], 0);
+	printf("%2d %2d %2d %2d\n", 15, array[10], array[11], 10);
 	printf("------------\n\n");
 }
 
