@@ -23,7 +23,7 @@
 
 typedef unsigned char BYTE;
 
-#define TOTAL_TRIES 4790016		// 12! / 100, that's the times we need to try
+#define TOTAL_TRIES 4790		// 12! / 100000, that's the times we need to try
 #define A1 18					// sum of row 1
 #define A2 27					// sum of row 2
 #define A3 29					// sum of row 3
@@ -35,30 +35,23 @@ typedef unsigned char BYTE;
 
 int match_number = 0;
 
-// print index
-void print_progress(int index)
+// print progress
+void print_progress(void)
 {
 	static int cumulate = 0;
 	cumulate++;
 	
-    // int i;
-	// for (i=0; i<index; i++)
-	// printf(".");
-	printf("-- %d, %.1f%% --\r", cumulate, (float)cumulate/TOTAL_TRIES * 100);
+	printf("- %.1f%% -\r", (float)cumulate/TOTAL_TRIES * 100);
 }
 
 // print out whole array
 void print_array(BYTE* array, int len)
 {
-    // int i;
-    // for (i=0; i<len; i++)
-    // printf("%d,", array[i]);
-    // printf("\n");
-	printf("%2d %2d %2d %2d         \n", 1, array[0], array[1], 12);
-	printf("%2d %2d %2d %2d\n", array[2], array[3], array[4], array[5]);
-	printf("%2d %2d %2d %2d\n", array[6], array[7], array[8], array[9]);
-	printf("%2d %2d %2d %2d\n", 16, array[10], array[11], 10);
-	printf("------------\n\n");
+	printf("%2d %2d %2d %2d \n", 1, array[0], array[1], 12);
+	printf("%2d %2d %2d %2d \n", array[2], array[3], array[4], array[5]);
+	printf("%2d %2d %2d %2d \n", array[6], array[7], array[8], array[9]);
+	printf("%2d %2d %2d %2d \n", 16, array[10], array[11], 10);
+	printf("------------    \n\n");
 }
 
 //function to convert string to byte array
@@ -97,8 +90,8 @@ if (l == r)
 {
 	static int index = 0;
 	index++;
-	if (index >= 100) index = 0;
-	if (index == 0) print_progress(10);	// print search progress every 100 tries.
+	if (index >= 100000) index = 0;
+	if (index == 0) print_progress();	// print search progress every 100 tries.
 	
     // printf("%s\n", a);
     int len = strlen(a);
@@ -108,18 +101,18 @@ if (l == r)
     string2ByteArray(a, arr);
 
 	// selection criteria list here
-    if (  ((arr[0] + arr[1]) == A1) && 
-          ((arr[2] + arr[3] + arr[4] + arr[5]) == A2) &&
-          ((arr[6] + arr[7] + arr[8] + arr[9]) == A3) &&
-          ((arr[10] + arr[11]) == A4) &&
-          ((arr[2] + arr[6]) == B1) && 
+    if (  ((arr[0] + arr[1]) 			  == A1) && 
+          ((arr[2] + arr[3] + arr[4] + arr[5])  == A2) &&
+          ((arr[6] + arr[7] + arr[8] + arr[9])  == A3) &&
+          ((arr[10] + arr[11]) 		  == A4) &&
+          ((arr[2] + arr[6]) 			  == B1) && 
           ((arr[0] + arr[3] + arr[7] + arr[10]) == B2) &&
           ((arr[1] + arr[4] + arr[8] + arr[11]) == B3) &&
-          ((arr[5] + arr[9]) == B4) )
-		  {
-			  print_array(arr, len);
-			  match_number++;
-		  }
+          ((arr[5] + arr[9]) 			  == B4) )
+	{
+		print_array(arr, len);
+		match_number++;
+	}
 }
 else
 {
@@ -147,9 +140,9 @@ int main()
 	//
 	// in this case, 1 10 12 16 should be skip, therefor
 	// A  J  L  P will be delete from the str[] array
-    char str[] = "BCDEFGHIKMNO";
-    int n = strlen(str);
-    permute(str, 0, n-1);
+    	char str[] = "BCDEFGHIKMNO";
+    	int n = strlen(str);
+    	permute(str, 0, n-1);
 	
 	end = clock();
 	cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
