@@ -38,5 +38,5 @@ It took 47.53 seconds, find 2 matchs </br>
 the same method apply to test3.c </br>
 
 # How to compile pthread version
-gcc -o test4 test4.c -lpthread
+$ gcc -o test4 test4.c -lpthread
 
