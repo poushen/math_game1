@@ -36,3 +36,7 @@ ops@ops-win81:/mnt/c/Users/Phou-shen$ ./test2 </br>
 It took 47.53 seconds, find 2 matchs </br>
 
 the same method apply to test3.c </br>
+
+# How to compile pthread version
+gcc -o test4 test4.c -lpthread
+
