@@ -40,3 +40,6 @@ the same method apply to test3.c </br>
 # How to compile pthread version
 $ gcc -o test4 test4.c -lpthread
 
+# more document
+https://ops9.blogspot.com/2021/05/blog-post.html
+
